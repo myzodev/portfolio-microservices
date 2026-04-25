@@ -1,12 +1,12 @@
 <?php
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv::createImmutable('../');
 $dotenv->safeLoad();
 
 $requestOrigin = $_SERVER['HTTP_ORIGIN'] ?? '';

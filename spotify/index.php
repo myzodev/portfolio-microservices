@@ -1,12 +1,12 @@
 <?php
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 use SpotifyWebAPI\Session;
 use SpotifyWebAPI\SpotifyWebAPI;
 use Dotenv\Dotenv;
 
-$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv::createImmutable('../');
 $dotenv->safeLoad();
 
 $requestOrigin = $_SERVER['HTTP_ORIGIN'] ?? '';
