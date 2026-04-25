@@ -6,7 +6,7 @@ use Dotenv\Dotenv;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-$dotenv = Dotenv::createImmutable('../');
+$dotenv = Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->safeLoad();
 
 $requestOrigin = $_SERVER['HTTP_ORIGIN'] ?? '';
@@ -17,7 +17,7 @@ $allowedOriginsArray = explode(',', $allowedOrigins);
 
 if (in_array($requestOrigin, $allowedOriginsArray)) {
     header("Access-Control-Allow-Origin: $requestOrigin");
-    header("Access-Control-Allow-Methods: POST, OPTIONS"); // Changed GET to POST
+    header("Access-Control-Allow-Methods: POST, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
     header("Access-Control-Allow-Credentials: true");
 } else {
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->SMTPSecure = $_ENV['SMTP_SECURE']; 
         $mail->Port       = $_ENV['SMTP_PORT'];
 
-        $mail->setFrom($_ENV['SMTP_USER'], 'Website Contact Form');
+        $mail->setFrom($_ENV['SMTP_USER'], $data->name);
         $mail->addAddress($_ENV['RECEIVER_EMAIL']); 
         $mail->addReplyTo($data->email, $data->name);
 

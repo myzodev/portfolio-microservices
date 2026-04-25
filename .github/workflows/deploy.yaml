@@ -32,5 +32,6 @@ jobs:
                       **/.git*
                       **/.git*/**
                       .env*
+                      **/*.md
                       composer.json
                       composer.lock

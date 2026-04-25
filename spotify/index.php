@@ -6,7 +6,7 @@ use SpotifyWebAPI\Session;
 use SpotifyWebAPI\SpotifyWebAPI;
 use Dotenv\Dotenv;
 
-$dotenv = Dotenv::createImmutable('../');
+$dotenv = Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->safeLoad();
 
 $requestOrigin = $_SERVER['HTTP_ORIGIN'] ?? '';
